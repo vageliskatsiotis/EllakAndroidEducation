@@ -288,6 +288,8 @@ public class DBHandler {
 
     public LinkedHashSet<String> GetPhotos(){
         LinkedHashSet<String> lhs = new LinkedHashSet<>();
+        String MyDB = mcontext.getApplicationContext().getFilesDir().getAbsolutePath() + "/databases/EllakDB.sqlite";
+        sqldb = SQLiteDatabase.openDatabase(MyDB, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         Cursor photoCursor = sqldb.rawQuery("SELECT QPhoto FROM Questions",null);
         photoCursor.moveToFirst();
         while(!photoCursor.isAfterLast()){
